@@ -1,11 +1,11 @@
 import React from "react";
-import { store } from "../store";
+import { connect } from "react-redux";
 import { setTechnology } from "../actions";
 
-const ButtonGroup = ({ technologies }) => {
+const ButtonGroup = ({ technologies, setTechnology }) => {
   function dispatchBtnAction(e) {
     const tech = e.target.dataset.tech;
-    store.dispatch(setTechnology(tech));
+    setTechnology(tech);
   }
   return (
     <div className="hello-btns">
@@ -23,4 +23,7 @@ const ButtonGroup = ({ technologies }) => {
   );
 };
 
-export default ButtonGroup;
+export default connect(
+  null,
+  { setTechnology }
+)(ButtonGroup);
